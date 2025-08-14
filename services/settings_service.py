@@ -13,6 +13,7 @@ class Settings:
         else:
             self.settings = {}
 
+    
     def get(self, key: str, default=None):
         return self.settings.get(key, default)
 
@@ -28,3 +29,10 @@ class Settings:
     def all(self):
         return self.settings
     
+    @property
+    def language(self) -> str:
+        return self.get("language", "en")
+
+    @property
+    def theme(self) -> str:
+        return self.get("theme", "dark")

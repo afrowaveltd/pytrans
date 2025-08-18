@@ -5,16 +5,17 @@ from services.settings_service import Settings
 from services.localization_service import LocalizationService
 
 class PyTransApp(App):
-    t = LocalizationService(Settings().get("language", "en"))
     def __init__(self):
+        super().__init__()
         self.settings = Settings()
-        
+        self.t = LocalizationService(self.settings.language)  # or Settings().get("language","en")
 
     def compose(self) -> ComposeResult:
-        yield Header(show_clock = True)
+        yield Header(show_clock=True)
         yield Footer()
 
+    async def on_mount(self) -> None:
+        self.log(self.t.get("Application starting"))
+
 if __name__ == "__main__":
-    app = PyTransApp()
-    #app.run()
-    print(get("Application starting"))
+    PyTransApp().run()

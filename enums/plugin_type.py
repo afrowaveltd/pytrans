@@ -1,7 +1,7 @@
 from enum import auto
 
 try:
-    from enum import StrEnum
+    from enum import StrEnum # type: ignore
 except ImportError:
     from enum import Enum
     class StrEnum(str, Enum):

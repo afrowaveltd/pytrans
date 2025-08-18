@@ -31,8 +31,8 @@ class Settings:
     
     @property
     def language(self) -> str:
-        return self.get("language", "en")
+        return self.get("language", "en") # pyright: ignore[reportReturnType]
 
     @property
     def theme(self) -> str:
-        return self.get("theme", "dark")
+        return self.get("theme", "dark") # pyright: ignore[reportReturnType]

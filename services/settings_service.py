@@ -11,7 +11,13 @@ class Settings:
             with open(self.file_path, "r", encoding="utf-8") as f:
                 self.settings = json.load(f)
         else:
-            self.settings = {}
+            # Create default settings
+            self.settings = {
+                "language": "en",
+                "theme": "dark",
+                "id": "", # to do - generate GUID 
+            }
+            self._save()
 
     
     def get(self, key: str, default=None):

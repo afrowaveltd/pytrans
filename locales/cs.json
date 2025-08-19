@@ -1,4 +1,25 @@
 {
-    "hello": "Ahoj",
-    "goodbye": "Sbohem"
+    "app.back": "Zpět",
+    "app.home": "Domů",
+    "app.starting": "Aplikace se spouští",
+    "ui.hub.title": "Rozcestník",
+    "ui.hub.targets": "Cíle",
+    "ui.hub.plugins": "Pluginy",
+    "ui.hub.scheduler": "Plánovač",
+    "ui.hub.dictionaries": "Slovníky",
+    "ui.hub.settings": "Nastavení",
+    "pal.placeholder.commands": "Hledat příkazy…",
+    "pal.placeholder.themes": "Hledat motivy…",
+    "cmd.change_theme": "Změnit motiv",
+    "cmd.change_theme.desc": "Změnit aktuální motiv",
+    "cmd.maximize": "Maximalizovat",
+    "cmd.maximize.desc": "Maximalizovat aktivní widget",
+    "cmd.quit": "Ukončit aplikaci",
+    "cmd.quit.desc": "Aplikaci ukončit co nejdříve",
+    "cmd.save_screenshot": "Uložit snímek obrazovky",
+    "cmd.save_screenshot.desc": "Uložit SVG snímek aktuální obrazovky",
+    "cmd.show_help": "Zobrazit klávesy a nápovědu",
+    "cmd.show_help.desc": "Zobrazit nápovědu pro aktivní widget a přehled kláves",
+    "theme.description": "Motiv UI",
+    "theme.as400": "AS/400 zelený"
 }

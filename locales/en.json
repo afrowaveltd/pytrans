@@ -1,4 +1,25 @@
 {
-    "hello": "Hello",
-    "goodbye": "Goodbye"
+    "app.starting": "Application starting",
+    "app.back": "Back",
+    "app.home": "Home",
+    "ui.hub.title": "Navigator",
+    "ui.hub.targets": "Targets",
+    "ui.hub.scheduler": "Scheduler",
+    "ui.hub.plugins": "Plugins",
+    "ui.hub.dictionaries": "Dictionaries",
+    "ui.hub.settings": "Settings",
+    "pal.placeholder.commands": "Search for commands…",
+    "pal.placeholder.themes": "Search for themes…",
+    "cmd.change_theme": "Change theme",
+    "cmd.change_theme.desc": "Change the current theme",
+    "cmd.maximize": "Maximize",
+    "cmd.maximize.desc": "Maximize the focused widget",
+    "cmd.quit": "Quit the application",
+    "cmd.quit.desc": "Quit the application as soon as possible",
+    "cmd.save_screenshot": "Save screenshot",
+    "cmd.save_screenshot.desc": "Save an SVG 'screenshot' of the current screen",
+    "cmd.show_help": "Show keys and help panel",
+    "cmd.show_help.desc": "Show help for the focused widget and a summary of available keys",
+    "theme.description": "UI theme",
+    "theme.as400": "AS/400 green"
 }

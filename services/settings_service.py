@@ -1,44 +1,61 @@
+
 import json
 from pathlib import Path
+from typing import Any, Dict, Optional
+import uuid
 
-class Settings: 
-    def __init__(self, file_path: Path = Path("./settings/settings.json")):
-        self.file_path = file_path
+DEFAULTS: Dict[str, Any] = {
+    "language": "en",
+    "theme": "textual-dark",
+    "application-id": "",  # will be filled on first run
+    "icon_set": "text"   # << přidáno: "text" | "emoji" | "none"
+}
+
+class Settings:
+    def __init__(self, file_path: Path = Path("./settings/settings.json")) -> None:
+        self.file_path = Path(file_path)
+        self.settings: Dict[str, Any] = {}
         self._load()
 
-    def _load(self):
+    def _load(self) -> None:
         if self.file_path.exists():
-            with open(self.file_path, "r", encoding="utf-8") as f:
-                self.settings = json.load(f)
+            self.settings = json.loads(self.file_path.read_text(encoding="utf-8"))
         else:
-            # Create default settings
-            self.settings = {
-                "language": "en",
-                "theme": "dark",
-                "id": "", # to do - generate GUID 
-            }
-            self._save()
+            self.settings = DEFAULTS.copy()
 
-    
-    def get(self, key: str, default=None):
+        # Migration & defaults
+        if not self.settings.get("application-id"):
+            # Support legacy key 'id'
+            legacy = self.settings.get("id")
+            self.settings["application-id"] = legacy or str(uuid.uuid4())
+        for k, v in DEFAULTS.items():
+            self.settings.setdefault(k, v)
+
+        self._save()  # ensure file exists and defaults applied
+
+    def _save(self) -> None:
+        self.file_path.parent.mkdir(parents=True, exist_ok=True)
+        self.file_path.write_text(json.dumps(self.settings, ensure_ascii=False, indent=4), encoding="utf-8")
+
+    def get(self, key: str, default: Optional[Any] = None) -> Any:
         return self.settings.get(key, default)
 
-    def set(self, key: str, value):
+    def set(self, key: str, value: Any) -> None:
         self.settings[key] = value
         self._save()
 
-    def _save(self):
-        with open(self.file_path, "w", encoding="utf-8") as f:
-            json.dump(self.settings, f, ensure_ascii=False, indent=4)
-
-    @property
-    def all(self):
-        return self.settings
-    
     @property
     def language(self) -> str:
-        return self.get("language", "en") # pyright: ignore[reportReturnType]
+        return str(self.get("language", "en"))
 
     @property
     def theme(self) -> str:
-        return self.get("theme", "dark") # pyright: ignore[reportReturnType]
+        return str(self.get("theme", "textual-dark"))
+
+    @property
+    def application_id(self) -> str:
+        return str(self.get("application-id", ""))
+
+    @property
+    def icon_set(self) -> str:
+        return self .get("icon_set", "text")

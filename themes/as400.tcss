@@ -1,0 +1,32 @@
+/* themes/as400.tcss — AS/400 / greenscreen inspired */
+* {
+  background: #001a00;
+  color: #8cff66;
+}
+
+Header, Footer, #topbar {
+  background: #002100;
+  color: #8cff66;
+  border: tall #00aa00;
+}
+
+Button {
+  background: #002600;
+  color: #8cff66;
+  border: round #00aa00;
+}
+
+Button.-active, Button:focus {
+  background: #003000;
+  color: #b8ff8f;
+  border: round #00cc00;
+}
+
+Static, Label, ListView {
+  background: #001a00;
+  color: #8cff66;
+}
+
+ListView > *:focus {
+  background: #003300;
+}
